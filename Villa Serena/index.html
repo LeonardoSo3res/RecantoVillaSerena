@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recanto Villa Serena</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+            RECANTO VILLA SERENA
+        </a>
+
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="index.html"> Início </a>
+            <a class="nav-link" href="quartos.html" target="_blank"> Quartos </a>
+            <a class="nav-link" href="reserva.html" target="_blank"> Reserva </a>
+            <a class="nav-link" href="dados.html" target="_blank"> Dados </a>
+
+        </div>
+    </div>
+</nav>
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="hero text-white rounded p-5">
+
+            <h2>
+                Encontre seu próximo<br>
+                <b>lugar para ficar</b>
+            </h2>
+
+            <p>
+                Reserve seu quarto de forma rápida,
+                simples e segura.
+            </p>
+
+            <div class="card p-3 text-dark">
+
+                <div class="row g-2">
+
+                    <div class="col-md-4">
+                        <label>Destino</label>
+                        <input class="form-control"
+                               value="Recanto Villa Serena">
+                    </div>
+
+                    <div class="col-md-3">
+                         <label>Check-in</label>
+                         <input type="date" id="checkin" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-3">
+                         <label>Check-out</label>
+                         <input type="date" id="checkout" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-2">
+                         <label>Hóspedes</label>
+                         <input type="number" id="hospedes" class="form-control" value="2" required>
+                    </div>
+
+                </div>
+
+                <button onclick="pesquisar()" class="btn btn-primary mt-3">
+                Pesquisar quartos
+                </button>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="text-center py-4">
+    <h3>Por que reservar conosco?</h3>
+    <p>Conforto, segurança e praticidade.</p>
+</div>
+<script>
+function pesquisar() {
+
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
+    const hospedes = document.getElementById("hospedes").value;
+
+    if (!checkin || !checkout || !hospedes) {
+        alert("Preencha o check-in, check-out e a quantidade de hóspedes.");
+        return;
+    }
+
+    if (hospedes < 1) {
+        alert("Informe pelo menos 1 hóspede.");
+        return;
+    }
+
+    if (checkout <= checkin) {
+        alert("O check-out deve ser depois do check-in.");
+        return;
+    }
+
+    window.location.href =
+        `quartos.html?checkin=${checkin}&checkout=${checkout}&hospedes=${hospedes}`;
+}
+</script>
+<footer class="text-center py-4 mt-5 bg-dark text-white">
+
+    <p class="mb-1">
+        © 2026 Leonardo, Janete e Rejane - Recanto Villa Serena - Conforto, segurança e praticidade.
+    </p>
+    
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script>
+    new window.VLibras.Widget(
+        "https://vlibras.gov.br/app"
+    );
+</script>
+
+</body>
+</html>
